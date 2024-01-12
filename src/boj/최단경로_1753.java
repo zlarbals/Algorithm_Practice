@@ -32,7 +32,7 @@ class Node implements Comparable<Node>{
         return Integer.compare(this.cost, o.cost);
     }
 }
-class 최단경로 {
+public class 최단경로_1753 {
 
     public static ArrayList<ArrayList<Node>> graph = new ArrayList<>();
 
