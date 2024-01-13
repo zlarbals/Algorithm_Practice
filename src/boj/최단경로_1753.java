@@ -10,11 +10,11 @@ import java.util.*;
  * -> 이렇게 선택된 노드는 최단거리가 완전히 선택된 노드로, 추가 반복 필요없음
  */
 
-class Node implements Comparable<Node>{
+class Node_1753 implements Comparable<Node_1753>{
     private int index;
     private int cost;
 
-    public Node(int index, int cost){
+    public Node_1753(int index, int cost){
         this.index = index;
         this.cost = cost;
     }
@@ -28,13 +28,13 @@ class Node implements Comparable<Node>{
     }
 
     @Override
-    public int compareTo(Node o) {
+    public int compareTo(Node_1753 o) {
         return Integer.compare(this.cost, o.cost);
     }
 }
 public class 최단경로_1753 {
 
-    public static ArrayList<ArrayList<Node>> graph = new ArrayList<>();
+    public static ArrayList<ArrayList<Node_1753>> graph = new ArrayList<>();
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -54,7 +54,7 @@ public class 최단경로_1753 {
             to = Integer.parseInt(st.nextToken());
             value = Integer.parseInt(st.nextToken());
 
-            graph.get(from).add(new Node(to, value));
+            graph.get(from).add(new Node_1753(to, value));
         }
 
         int[] result = new int[v+1];
@@ -71,12 +71,12 @@ public class 최단경로_1753 {
     }
 
     private static void dijkstra(int[] result, int start) {
-        PriorityQueue<Node> pq = new PriorityQueue<>();
-        pq.add(new Node(start,0));
+        PriorityQueue<Node_1753> pq = new PriorityQueue<>();
+        pq.add(new Node_1753(start,0));
         result[start]=0;
 
         while(!pq.isEmpty()){
-            Node node = pq.poll();
+            Node_1753 node = pq.poll();
             int nowIndex = node.getIndex();
             int nowCost = node.getCost();
 
@@ -85,12 +85,12 @@ public class 최단경로_1753 {
             }
 
             for(int i=0;i<graph.get(nowIndex).size();i++){
-                Node nextNode = graph.get(nowIndex).get(i);
+                Node_1753 nextNode = graph.get(nowIndex).get(i);
                 int costSum = nowCost + nextNode.getCost();
 
                 if(costSum<result[nextNode.getIndex()]){
                     result[nextNode.getIndex()] = costSum;
-                    pq.add(new Node(nextNode.getIndex(), costSum));
+                    pq.add(new Node_1753(nextNode.getIndex(), costSum));
                 }
             }
         }
